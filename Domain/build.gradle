@@ -1,0 +1,17 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    def domainDependencies = rootProject.ext.domainDependencies
+    def domainTestDependencies = rootProject.ext.domainTestDependencies
+    implementation domainDependencies.javaxAnnotation
+    implementation domainDependencies.javaxInject
+    implementation domainDependencies.rxJava
+    testImplementation domainTestDependencies.mockito
+    testImplementation domainTestDependencies.assertj
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
