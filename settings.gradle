@@ -1,3 +1,4 @@
 rootProject.name='CleanArk'
 include ':Domain'
 include ':Data'
+include ':Remote'
