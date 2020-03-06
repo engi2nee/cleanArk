@@ -34,7 +34,7 @@ ext {
 
     dataDependencies = [
             rxKotlin:           "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
-            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}",
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
     ]
