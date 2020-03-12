@@ -9,6 +9,7 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,7 +23,7 @@ class ProjectsCacheDataStoreTest {
 
     @Test
     fun getProjectsCompletes() {
-        stubProjectsCacheGetProjects(Observable.just(listOf(ProjectFactory.makeProjectEntity())))
+        stubProjectsCacheGetProjects(Flowable.just(listOf(ProjectFactory.makeProjectEntity())))
         val testObserver = store.getProjects().test()
         testObserver.assertComplete()
     }
@@ -30,14 +31,14 @@ class ProjectsCacheDataStoreTest {
     @Test
     fun getProjectsReturnsData() {
         val data = listOf(ProjectFactory.makeProjectEntity())
-        stubProjectsCacheGetProjects(Observable.just(data))
+        stubProjectsCacheGetProjects(Flowable.just(data))
         val testObserver = store.getProjects().test()
         testObserver.assertValue(data)
     }
 
     @Test
     fun getProjectsCallsCacheSource() {
-        stubProjectsCacheGetProjects(Observable.just(listOf(ProjectFactory.makeProjectEntity())))
+        stubProjectsCacheGetProjects(Flowable.just(listOf(ProjectFactory.makeProjectEntity())))
         store.getProjects().test()
         verify(cache).getProjects()
     }
@@ -75,7 +76,7 @@ class ProjectsCacheDataStoreTest {
 
     @Test
     fun getBookmarkedProjectsCompletes() {
-        stubProjectsCacheGetBookmarkedProjects(Observable.just(listOf(
+        stubProjectsCacheGetBookmarkedProjects(Flowable.just(listOf(
                 ProjectFactory.makeProjectEntity())))
         val testObserver = store.getBookmarkedProjects().test()
         testObserver.assertComplete()
@@ -83,7 +84,7 @@ class ProjectsCacheDataStoreTest {
 
     @Test
     fun getBookmarkedProjectsCallsCacheStore() {
-        stubProjectsCacheGetBookmarkedProjects(Observable.just(listOf(
+        stubProjectsCacheGetBookmarkedProjects(Flowable.just(listOf(
                 ProjectFactory.makeProjectEntity())))
         store.getBookmarkedProjects().test()
         verify(cache).getBookmarkedProjects()
@@ -92,7 +93,7 @@ class ProjectsCacheDataStoreTest {
     @Test
     fun getBookmarkedProjectsReturnsData() {
         val data = listOf(ProjectFactory.makeProjectEntity())
-        stubProjectsCacheGetBookmarkedProjects(Observable.just(data))
+        stubProjectsCacheGetBookmarkedProjects(Flowable.just(data))
         val testObserver = store.getBookmarkedProjects().test()
         testObserver.assertValue(data)
     }
@@ -127,7 +128,7 @@ class ProjectsCacheDataStoreTest {
         verify(cache).setProjectAsNotBookmarked(projectId)
     }
 
-    private fun stubProjectsCacheGetProjects(observable: Observable<List<ProjectEntity>>) {
+    private fun stubProjectsCacheGetProjects(observable: Flowable<List<ProjectEntity>>) {
         whenever(cache.getProjects())
                 .thenReturn(observable)
     }
@@ -147,7 +148,7 @@ class ProjectsCacheDataStoreTest {
                 .thenReturn(completable)
     }
 
-    private fun stubProjectsCacheGetBookmarkedProjects(observable: Observable<List<ProjectEntity>>) {
+    private fun stubProjectsCacheGetBookmarkedProjects(observable: Flowable<List<ProjectEntity>>) {
         whenever(cache.getBookmarkedProjects())
                 .thenReturn(observable)
     }

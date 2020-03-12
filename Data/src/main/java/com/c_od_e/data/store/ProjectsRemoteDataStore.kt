@@ -4,6 +4,7 @@ import com.c_od_e.data.model.ProjectEntity
 import com.c_od_e.data.repository.ProjectsDataStore
 import com.c_od_e.data.repository.ProjectsRemote
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -11,7 +12,7 @@ open class ProjectsRemoteDataStore @Inject constructor(
     private val projectsRemote: ProjectsRemote
 ) : ProjectsDataStore {
 
-    override fun getProjects(): Observable<List<ProjectEntity>> {
+    override fun getProjects(): Flowable<List<ProjectEntity>> {
         return projectsRemote.getProjects()
     }
 
@@ -23,7 +24,7 @@ open class ProjectsRemoteDataStore @Inject constructor(
         throw UnsupportedOperationException("Clearing projects isn't supported here...")
     }
 
-    override fun getBookmarkedProjects(): Observable<List<ProjectEntity>> {
+    override fun getBookmarkedProjects(): Flowable<List<ProjectEntity>> {
         throw UnsupportedOperationException("Getting bookmarked projects isn't supported here...")
     }
 

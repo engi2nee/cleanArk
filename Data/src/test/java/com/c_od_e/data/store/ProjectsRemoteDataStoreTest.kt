@@ -6,6 +6,7 @@ import com.c_od_e.data.test.factory.DataFactory
 import com.c_od_e.data.test.factory.ProjectFactory
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,7 +20,7 @@ class ProjectsRemoteDataStoreTest {
 
     @Test
     fun getProjectsCompletes() {
-        stubRemoteGetProjects(Observable.just(listOf(ProjectFactory.makeProjectEntity())))
+        stubRemoteGetProjects(Flowable.just(listOf(ProjectFactory.makeProjectEntity())))
         val testObserver = store.getProjects().test()
         testObserver.assertComplete()
     }
@@ -27,7 +28,7 @@ class ProjectsRemoteDataStoreTest {
     @Test
     fun getProjectsReturnsData() {
         val response = listOf(ProjectFactory.makeProjectEntity())
-        stubRemoteGetProjects(Observable.just(response))
+        stubRemoteGetProjects(Flowable.just(response))
         val testObserver = store.getProjects().test()
         testObserver.assertValue(response)
     }
@@ -57,7 +58,7 @@ class ProjectsRemoteDataStoreTest {
         store.setProjectAsNotBookmarked(DataFactory.randomString()).test()
     }
 
-    private fun stubRemoteGetProjects(observable: Observable<List<ProjectEntity>>) {
+    private fun stubRemoteGetProjects(observable: Flowable<List<ProjectEntity>>) {
         whenever(remote.getProjects())
                 .thenReturn(observable)
     }

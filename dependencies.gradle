@@ -34,7 +34,8 @@ ext {
     domainTestDependencies = [
             junit:              "junit:junit:${jUnitVersion}",
             mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
-            assertj:            "org.assertj:assertj-core:${assertJVersion}"
+            assertj:            "org.assertj:assertj-core:${assertJVersion}",
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
     ]
 
     dataDependencies = [
@@ -49,7 +50,8 @@ ext {
             kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
             assertj:            "org.assertj:assertj-core:${assertJVersion}",
             mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
-            robolectric:        "org.robolectric:robolectric:${robolectricVersion}"
+            robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
     ]
 
     remoteDependencies = [
@@ -70,7 +72,8 @@ ext {
             junit:              "junit:junit:${jUnitVersion}",
             kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
             assertj:            "org.assertj:assertj-core:${assertJVersion}",
-            mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}"
+            mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
     ]
 
 }
