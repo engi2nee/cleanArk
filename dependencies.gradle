@@ -19,10 +19,10 @@ ext {
     archCompVersion = '1.1.1'
 
     //Testing
-    jUnitVersion = '4.12'
-    assertJVersion = '3.8.0'
+    jUnitVersion = '4.13'
+    assertJVersion = '3.15.0'
     mockitokotlin_version = '1.5.0'
-    robolectricVersion = '3.4.2'
+    robolectricVersion = '4.3.1'
     mockitoVersion = '1.9.5'
     androidSupportRunnerVersion = '1.0.0'
     androidSupportRulesVersion = '1.0.0'
@@ -100,6 +100,7 @@ ext {
             kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
             robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
             assertj:            "org.assertj:assertj-core:${assertJVersion}",
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin_version}",
             mockito:            "com.nhaarman:mockito-kotlin:${mockitokotlin_version}",
             roomTesting:        "android.arch.persistence.room:testing:${roomVersion}",
             archTesting:        "android.arch.core:core-testing:${archCompVersion}",

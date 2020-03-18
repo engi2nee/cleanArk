@@ -1,6 +1,6 @@
 package com.c_od_e.data.model
 
-class ProjectEntity(
+data class ProjectEntity(
     val id: String, val name: String, val fullName: String,
     val starCount: String, val dateCreated: String,
     val ownerName: String, val ownerAvatar: String,
