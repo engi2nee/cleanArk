@@ -6,7 +6,7 @@ import com.c_od_e.domain.repository.ProjectsRepository
 import io.reactivex.Completable
 import javax.inject.Inject
 
-class UnbookmarkProjectUseCase @Inject constructor(
+open class UnbookmarkProjectUseCase @Inject constructor(
     private val projectsRepository: ProjectsRepository,
     postExecutionThread: PostExecutionThread
 ) : CompletableUseCase<UnbookmarkProjectUseCase.Params>(postExecutionThread) {

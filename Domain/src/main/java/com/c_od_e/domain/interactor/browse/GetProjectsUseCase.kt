@@ -7,10 +7,10 @@ import com.c_od_e.domain.repository.ProjectsRepository
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class GetProjectsUseCase @Inject constructor(
+open class GetProjectsUseCase @Inject constructor(
     private val projectsRepository: ProjectsRepository,
     postExecutionThread: PostExecutionThread
-) : ObservableUseCase<List<Project>, Nothing>(postExecutionThread) {
+) : ObservableUseCase<List<Project>, Nothing?>(postExecutionThread) {
 
     public override fun buildUseCaseObservable(params: Nothing?): Observable<List<Project>> {
         return projectsRepository.getProjects()

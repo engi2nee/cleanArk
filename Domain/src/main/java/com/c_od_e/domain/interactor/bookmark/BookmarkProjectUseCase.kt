@@ -7,7 +7,7 @@ import io.reactivex.Completable
 import javax.inject.Inject
 
 
-class BookmarkProjectUseCase @Inject constructor(
+open class BookmarkProjectUseCase @Inject constructor(
     private val projectsRepository: ProjectsRepository,
     postExecutionThread: PostExecutionThread
 )
