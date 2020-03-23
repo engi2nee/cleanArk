@@ -11,7 +11,6 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
-import io.reactivex.Flowable
 import io.reactivex.Observable
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,7 +25,8 @@ class ProjectsRemoteImplTest {
 
     @Test
     fun getProjectsCompletes() {
-        stubGithubTrendingServiceSearchRepositories(Flowable.just(
+        stubGithubTrendingServiceSearchRepositories(
+            Observable.just(
             ProjectDataFactory.makeProjectsResponse()))
         stubProjectsResponseModelMapperMapFromModel(any(),
             ProjectDataFactory.makeProjectEntity())
@@ -37,7 +37,7 @@ class ProjectsRemoteImplTest {
 
     @Test
     fun getProjectsCallsServer() {
-        stubGithubTrendingServiceSearchRepositories(Flowable.just(
+        stubGithubTrendingServiceSearchRepositories(Observable.just(
             ProjectDataFactory.makeProjectsResponse()))
         stubProjectsResponseModelMapperMapFromModel(any(),
             ProjectDataFactory.makeProjectEntity())
@@ -49,7 +49,7 @@ class ProjectsRemoteImplTest {
     @Test
     fun getProjectsReturnsData() {
         val response = ProjectDataFactory.makeProjectsResponse()
-        stubGithubTrendingServiceSearchRepositories(Flowable.just(response))
+        stubGithubTrendingServiceSearchRepositories(Observable.just(response))
         val entities = mutableListOf<ProjectEntity>()
         response.items.forEach {
             val entity = ProjectDataFactory.makeProjectEntity()
@@ -62,7 +62,8 @@ class ProjectsRemoteImplTest {
 
     @Test
     fun getProjectsCallsServerWithCorrectParameters() {
-        stubGithubTrendingServiceSearchRepositories(Flowable.just(
+        stubGithubTrendingServiceSearchRepositories(
+            Observable.just(
             ProjectDataFactory.makeProjectsResponse()))
         stubProjectsResponseModelMapperMapFromModel(any(),
             ProjectDataFactory.makeProjectEntity())
@@ -72,7 +73,7 @@ class ProjectsRemoteImplTest {
     }
 
     private fun stubGithubTrendingServiceSearchRepositories(observable:
-                                                            Flowable<ProjectsResponseModel>) {
+                                                            Observable<ProjectsResponseModel>) {
         whenever(service.searchRepositories(any(), any(), any()))
             .thenReturn(observable)
     }

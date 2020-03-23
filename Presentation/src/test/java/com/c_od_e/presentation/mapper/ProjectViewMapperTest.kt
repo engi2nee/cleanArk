@@ -1,4 +1,4 @@
-package co.joebirch.presentation.mapper
+package com.c_od_e.presentation.mapper
 
 import com.c_od_e.presentation.test.factory.ProjectFactory
 import com.c_od_e.presentation.mapper.ProjectViewMapper

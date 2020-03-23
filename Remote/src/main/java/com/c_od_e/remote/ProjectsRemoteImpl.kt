@@ -5,14 +5,15 @@ import com.c_od_e.data.repository.ProjectsRemote
 import com.c_od_e.remote.mapper.ProjectsResponseModelMapper
 import com.c_od_e.remote.service.GithubTrendingService
 import io.reactivex.Flowable
+import io.reactivex.Observable
 import javax.inject.Inject
 
-class ProjectsRemoteImpl @Inject constructor(
+open class ProjectsRemoteImpl @Inject constructor(
     private val service: GithubTrendingService,
-    private val mapper: ProjectsResponseModelMapper
-) : ProjectsRemote {
+    private val mapper: ProjectsResponseModelMapper)
+    : ProjectsRemote {
 
-    override fun getProjects(): Flowable<List<ProjectEntity>> {
+    override fun getProjects(): Observable<List<ProjectEntity>> {
         return service.searchRepositories("language:kotlin", "stars", "desc")
             .map {
                 it.items.map { mapper.mapFromModel(it) }
